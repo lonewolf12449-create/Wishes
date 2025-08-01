@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Girlfriends Day Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to right, #ffeaea, #fff1f1);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      perspective: 1200px;
+    }
+
+    .card {
+      width: 420px;
+      height: 580px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
+      outline: none;
+      border-radius: 22px;
+      box-shadow: 0 8px 30px rgba(230, 57, 80, 0.13);
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 22px;
+      overflow: hidden;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .front {
+      background: linear-gradient(160deg, #fff5fa 60%, #ffdbe7 110%);
+      border: 4px solid #ffeaea;
+      box-shadow: 0 0 0 8px #fff0f5 inset;
+    }
+
+    .heart-garland {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .g-heart {
+      font-size: 32px;
+      color: #ff5e7e;
+      margin: 0 5px;
+      animation: sway 2s infinite alternate;
+    }
+
+    .g-heart:nth-child(2) { color: #e63950; animation-delay: 0.2s; }
+    .g-heart:nth-child(3) { color: #ffaac9; animation-delay: 0.4s;}
+    .g-heart:nth-child(4) { color: #ff5e7e; animation-delay: 0.6s;}
+    .g-heart:nth-child(5) { color: #e63950; animation-delay: 0.8s;}
+
+    @keyframes sway {
+      0% { transform: translateY(0) rotate(-8deg);}
+      100% { transform: translateY(8px) rotate(8deg);}
+    }
+
+    .center-heart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .big-heart {
+      font-size: 54px;
+      color: #e63950;
+      animation: beat 1.3s infinite;
+      filter: drop-shadow(0 2px 4px #ffd1d9);
+    }
+
+    .ribbon {
+      width: 38px;
+      height: 24px;
+      border-radius: 12px 12px 12px 12px/22px 10px 10px 16px;
+      background: #ffbaca;
+      transform: rotate(-22deg);
+      box-shadow: 0 2px 8px #ffd8e2 inset;
+      margin-top: 13px;
+    }
+
+    .ribbon.right {
+      transform: rotate(27deg);
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1);}
+      25% { transform: scale(1.12);}
+      60% { transform: scale(0.90);}
+    }
+
+    .front h1, .front h2, .front h3 {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 0 2px 3px #ffd8e4cc, 0 0 1px #fff7fc88;
+    }
+
+    .front h1 {
+      font-size: 40px;
+      color: #e63950;
+      margin-bottom: 10px;
+      animation: popFade 2.2s infinite;
+    }
+
+    .front h2 {
+      font-size: 28px;
+      color: #ff79a5;
+      margin-bottom: 9px;
+      animation: popFade 2.8s .7s infinite;
+    }
+
+    .front h3 {
+      font-size: 26px;
+      color: #ff5e7e;
+      animation: popFade 3s 1.4s infinite;
+    }
+
+    @keyframes popFade {
+      0%, 100% { opacity: 1; transform: scale(1);}
+      45% { opacity: 0.86; transform: scale(1.07);}
+      55% { opacity: 0.92; transform: scale(0.95);}
+    }
+
+    .floating-hearts .float-heart {
+      position: absolute;
+      font-size: 32px;
+      color: #ffaac9;
+      opacity: 0.65;
+      animation: floatHeart 7s linear infinite;
+    }
+
+    .float-heart.f1 { left: 11%; top: 75%; animation-delay: 1s;}
+    .float-heart.f2 { left: 28%; top: 90%; animation-delay: 3s;}
+    .float-heart.f3 { left: 51%; top: 80%; animation-delay: 0s;}
+    .float-heart.f4 { left: 67%; top: 77%; animation-delay: 2.2s;}
+    .float-heart.f5 { left: 82%; top: 86%; animation-delay: 4.2s;}
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(0.95); opacity: 0.68;}
+      25% { opacity: 0.95;}
+      60% { opacity: 0.8; transform: translateY(-40px) scale(1.15);}
+      100% { opacity: 0; transform: translateY(-110px) scale(.96);}
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      background: linear-gradient(120deg, #fff1f7 60%, #ffdbe7 160%);
+      padding-top: 38px;
+      justify-content: flex-start;
+      color: #444;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 0 auto 30px auto;
+      width: 90%;
+      max-width: 340px;
+    }
+
+    .photos-grid img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid #ff5e7e;
+      background: #f9dae2;
+    }
+
+    .message {
+      font-size: 19px;
+      line-height: 1.6;
+      padding: 0 10px;
+    }
+
+    .signature {
+      margin-top: 18px;
+      color: #888;
+      font-size: 18px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" id="card" tabindex="0">
+      <div class="face front">
+        <div class="heart-garland">
+          <span class="g-heart">❤️</span>
+          <span class="g-heart">💕</span>
+          <span class="g-heart">💖</span>
+          <span class="g-heart">💗</span>
+          <span class="g-heart">❤️</span>
+        </div>
+        <div class="center-heart">
+          <span class="ribbon"></span>
+          <span class="big-heart">💞</span>
+          <span class="ribbon right"></span>
+        </div>
+        <h1>Happy Girlfriends Day</h1>
+        <h2>To My Love</h2>
+        <h3>Swetapadma</h3>
+        <div class="floating-hearts">
+          <span class="float-heart f1">❤</span>
+          <span class="float-heart f2">💗</span>
+          <span class="float-heart f3">💕</span>
+          <span class="float-heart f4">💖</span>
+          <span class="float-heart f5">❤</span>
+        </div>
+      </div>
+      <div class="face back">
+        <div class="photos-grid">
+          <img src="pic1.jpeg" alt="Photo 1" />
+          <img src="pic2.jpeg" alt="Photo 2" />
+          <img src="pic3.jpeg" alt="Photo 3" />
+          <img src="pic4.jpeg" alt="Photo 4" />
+          <img src="pic51.jpeg" alt="Photo 5" />
+          <img src="pic6.jpeg" alt="Photo 6" />
+        </div>
+        <div class="message">
+          Every single moment with you is a beautiful memory.<br />
+          I hope I will always keep you happy and healthy.<br />
+          I wish the best for you!<br/>
+          Thank you for loving me the way you do.
+        </div>
+        <div class="signature">— Yours forever Swastik💖</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const card = document.getElementById('card');
+    function toggleFlip() {
+      card.classList.toggle('flipped');
+    }
+    card.addEventListener('click', toggleFlip);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFlip();
+      }
+    });
+  </script>
+</body>
+</html>
+
